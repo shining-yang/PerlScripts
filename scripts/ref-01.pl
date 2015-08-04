@@ -1,5 +1,7 @@
 #!/usr/bin/perl -w
 use strict;
+use Data::Dumper;
+use JSON;
 
 my %emp_tom = (
 	name => 'Tom Cruize',
@@ -61,3 +63,10 @@ foreach my $person (@href_array) {
 for my $iter (@href_array) {
 	printf $fmt, @$iter{qw(name hat shirt position)};
 }
+
+print Dumper(@href_array);
+print Dumper(\@href_array);
+
+###########
+print "\nJSON: \n", to_json(\@href_array, { pretty => 1 });
+
