@@ -12,3 +12,24 @@ my @indices_of_odd_digit_sums = grep {
 print "Numbers with odd digit sums: @input_numbers[@indices_of_odd_digit_sums]\n";
 
 
+my @x = (1, 4, 32, 12, 8, 10, 3, 108, 2);
+my @y = (0, 8, 10, 3, 27, 9, 16, 209);
+
+#### way 01
+my @bigger_data;
+my @bigger_indices = grep {
+	$_ > $#y or $x[$_] > $y[$_];
+} 0 .. $#x;
+@bigger_data = @x[@bigger_indices];
+print "Result: @bigger_data\n";
+
+#### way 02
+@bigger_data = map {
+	if ($_ > $#y or $x[$_] > $y[$_]) {
+		$x[$_];
+	} else {
+		();
+	}
+} 0 .. $#x;
+print "Result: @bigger_data\n";
+
